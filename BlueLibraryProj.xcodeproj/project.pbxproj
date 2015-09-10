@@ -14,11 +14,11 @@
 		7F74E6801BA13090003DB131 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7F74E67F1BA13090003DB131 /* Images.xcassets */; };
 		7F74E6831BA13090003DB131 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7F74E6811BA13090003DB131 /* LaunchScreen.xib */; };
 		7F74E68F1BA13090003DB131 /* BlueLibraryProjTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F74E68E1BA13090003DB131 /* BlueLibraryProjTests.swift */; };
-		7F74E6991BA130B9003DB131 /* Album.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F74E6981BA130B9003DB131 /* Album.swift */; };
 		7F74E69C1BA131B9003DB131 /* AlbumView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F74E69B1BA131B9003DB131 /* AlbumView.swift */; };
 		7F74E6A21BA1365B003DB131 /* LibraryAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F74E6A11BA1365B003DB131 /* LibraryAPI.swift */; };
 		7F74E6A41BA13767003DB131 /* PersistencyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F74E6A31BA13767003DB131 /* PersistencyManager.swift */; };
 		7F74E6A61BA13B8E003DB131 /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F74E6A51BA13B8E003DB131 /* HTTPClient.swift */; };
+		7F74E6A81BA16114003DB131 /* Album.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F74E6A71BA16114003DB131 /* Album.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,11 +43,11 @@
 		7F74E6881BA13090003DB131 /* BlueLibraryProjTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BlueLibraryProjTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F74E68D1BA13090003DB131 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7F74E68E1BA13090003DB131 /* BlueLibraryProjTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlueLibraryProjTests.swift; sourceTree = "<group>"; };
-		7F74E6981BA130B9003DB131 /* Album.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Album.swift; path = ../Album.swift; sourceTree = "<group>"; };
 		7F74E69B1BA131B9003DB131 /* AlbumView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlbumView.swift; sourceTree = "<group>"; };
 		7F74E6A11BA1365B003DB131 /* LibraryAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LibraryAPI.swift; sourceTree = "<group>"; };
 		7F74E6A31BA13767003DB131 /* PersistencyManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersistencyManager.swift; sourceTree = "<group>"; };
 		7F74E6A51BA13B8E003DB131 /* HTTPClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
+		7F74E6A71BA16114003DB131 /* Album.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Album.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,7 +131,7 @@
 		7F74E69D1BA13599003DB131 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				7F74E6981BA130B9003DB131 /* Album.swift */,
+				7F74E6A71BA16114003DB131 /* Album.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -268,8 +268,8 @@
 				7F74E6A21BA1365B003DB131 /* LibraryAPI.swift in Sources */,
 				7F74E6761BA13090003DB131 /* AppDelegate.swift in Sources */,
 				7F74E69C1BA131B9003DB131 /* AlbumView.swift in Sources */,
-				7F74E6991BA130B9003DB131 /* Album.swift in Sources */,
 				7F74E6A41BA13767003DB131 /* PersistencyManager.swift in Sources */,
+				7F74E6A81BA16114003DB131 /* Album.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

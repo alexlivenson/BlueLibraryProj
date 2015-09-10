@@ -14,7 +14,7 @@ class Album: NSObject {
     let genre: String
     let coverUrl: String
     let year: String
-   
+    
     init(title: String, artist: String, coverUrl: String, year: String) {
         self.title = title
         self.artist = artist
