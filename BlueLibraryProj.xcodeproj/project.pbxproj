@@ -18,6 +18,7 @@
 		7F74E69C1BA131B9003DB131 /* AlbumView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F74E69B1BA131B9003DB131 /* AlbumView.swift */; };
 		7F74E6A21BA1365B003DB131 /* LibraryAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F74E6A11BA1365B003DB131 /* LibraryAPI.swift */; };
 		7F74E6A41BA13767003DB131 /* PersistencyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F74E6A31BA13767003DB131 /* PersistencyManager.swift */; };
+		7F74E6A61BA13B8E003DB131 /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F74E6A51BA13B8E003DB131 /* HTTPClient.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +47,7 @@
 		7F74E69B1BA131B9003DB131 /* AlbumView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlbumView.swift; sourceTree = "<group>"; };
 		7F74E6A11BA1365B003DB131 /* LibraryAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LibraryAPI.swift; sourceTree = "<group>"; };
 		7F74E6A31BA13767003DB131 /* PersistencyManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersistencyManager.swift; sourceTree = "<group>"; };
+		7F74E6A51BA13B8E003DB131 /* HTTPClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,6 +157,7 @@
 			children = (
 				7F74E6A11BA1365B003DB131 /* LibraryAPI.swift */,
 				7F74E6A31BA13767003DB131 /* PersistencyManager.swift */,
+				7F74E6A51BA13B8E003DB131 /* HTTPClient.swift */,
 			);
 			name = API;
 			sourceTree = "<group>";
@@ -261,6 +264,7 @@
 			files = (
 				7F74E67B1BA13090003DB131 /* ViewController.swift in Sources */,
 				7F74E6791BA13090003DB131 /* BlueLibraryProj.xcdatamodeld in Sources */,
+				7F74E6A61BA13B8E003DB131 /* HTTPClient.swift in Sources */,
 				7F74E6A21BA1365B003DB131 /* LibraryAPI.swift in Sources */,
 				7F74E6761BA13090003DB131 /* AppDelegate.swift in Sources */,
 				7F74E69C1BA131B9003DB131 /* AlbumView.swift in Sources */,
