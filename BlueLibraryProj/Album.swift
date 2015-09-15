@@ -23,3 +23,13 @@ class Album: NSObject {
         self.genre = "Pop"
     }
 }
+
+// Album+TableRepresentation
+extension Album {
+    func tr_tableRepresentation() -> [String: [String]] {
+        return [
+            "titles" : [ "Artist", "Album", "Genre", "Year"],
+            "values": [self.artist, self.title, self.genre, self.year]
+        ]        
+    }
+}

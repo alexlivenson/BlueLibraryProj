@@ -19,6 +19,7 @@
 		7F74E6A41BA13767003DB131 /* PersistencyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F74E6A31BA13767003DB131 /* PersistencyManager.swift */; };
 		7F74E6A61BA13B8E003DB131 /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F74E6A51BA13B8E003DB131 /* HTTPClient.swift */; };
 		7F74E6A81BA16114003DB131 /* Album.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F74E6A71BA16114003DB131 /* Album.swift */; };
+		7F74E6AC1BA7311D003DB131 /* HorizontalScroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F74E6AB1BA7311D003DB131 /* HorizontalScroller.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +49,7 @@
 		7F74E6A31BA13767003DB131 /* PersistencyManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersistencyManager.swift; sourceTree = "<group>"; };
 		7F74E6A51BA13B8E003DB131 /* HTTPClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
 		7F74E6A71BA16114003DB131 /* Album.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Album.swift; sourceTree = "<group>"; };
+		7F74E6AB1BA7311D003DB131 /* HorizontalScroller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HorizontalScroller.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,6 +142,7 @@
 			isa = PBXGroup;
 			children = (
 				7F74E69B1BA131B9003DB131 /* AlbumView.swift */,
+				7F74E6AB1BA7311D003DB131 /* HorizontalScroller.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -266,6 +269,7 @@
 				7F74E6791BA13090003DB131 /* BlueLibraryProj.xcdatamodeld in Sources */,
 				7F74E6A61BA13B8E003DB131 /* HTTPClient.swift in Sources */,
 				7F74E6A21BA1365B003DB131 /* LibraryAPI.swift in Sources */,
+				7F74E6AC1BA7311D003DB131 /* HorizontalScroller.swift in Sources */,
 				7F74E6761BA13090003DB131 /* AppDelegate.swift in Sources */,
 				7F74E69C1BA131B9003DB131 /* AlbumView.swift in Sources */,
 				7F74E6A41BA13767003DB131 /* PersistencyManager.swift in Sources */,
@@ -465,6 +469,7 @@
 				7F74E6941BA13090003DB131 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		7F74E6951BA13090003DB131 /* Build configuration list for PBXNativeTarget "BlueLibraryProjTests" */ = {
 			isa = XCConfigurationList;
@@ -473,6 +478,7 @@
 				7F74E6971BA13090003DB131 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
