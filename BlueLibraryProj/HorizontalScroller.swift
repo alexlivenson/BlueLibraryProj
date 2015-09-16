@@ -49,7 +49,7 @@ class HorizontalScroller: UIView {
         reload()
     }
     
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
@@ -66,7 +66,7 @@ class HorizontalScroller: UIView {
                 
                 // 3 - add a view at the right position
                 xValue += VIEW_PADDING
-                var view = self.delegate?.horizontalScroller(self, viewAtIndex: i)
+                let view = self.delegate?.horizontalScroller(self, viewAtIndex: i)
                 
                 view?.frame = CGRectMake(xValue, VIEW_PADDING, VIEW_DIMENSIONS, VIEW_DIMENSIONS)
                 
@@ -89,11 +89,11 @@ class HorizontalScroller: UIView {
     }
     
     func scrollerTapped(gesture: UITapGestureRecognizer) {
-        var location = gesture.locationInView(gesture.view)
+        let location = gesture.locationInView(gesture.view)
         
         // Enumerate over only the subviews that we added
         for var i = 0; i < self.delegate?.numberOfViewsForHorizontalScroller(self); i++ {
-            var view = scroller.subviews[i] as? UIView
+            let view = scroller.subviews[i] as? UIView
             
             if let view = view {
                 if CGRectContainsPoint(view.frame, location) {
@@ -109,8 +109,8 @@ class HorizontalScroller: UIView {
     }
     
     func centerCurrentView() {
-        var xFinal = scroller.contentOffset.x + (VIEWS_OFFSET / 2) + VIEW_PADDING
-        var viewIndex = xFinal / (VIEW_DIMENSIONS + 2 * VIEW_PADDING)
+        let xFinal = scroller.contentOffset.x + (VIEWS_OFFSET / 2) + VIEW_PADDING
+        let viewIndex = xFinal / (VIEW_DIMENSIONS + 2 * VIEW_PADDING)
         scroller.setContentOffset(CGPointMake(xFinal, 0), animated: true)
         self.delegate?.horizontalScroller(self, clickedViewAtIndex: Int(viewIndex))
     }

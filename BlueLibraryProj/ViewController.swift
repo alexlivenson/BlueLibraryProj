@@ -76,7 +76,7 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cellIdentifier = "cell"
         
-        var cell = tableView .dequeueReusableCellWithIdentifier(cellIdentifier) as? UITableViewCell
+        var cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier)
         
         if cell == nil {
             cell = UITableViewCell(style: UITableViewCellStyle.Value1, reuseIdentifier: cellIdentifier)
@@ -99,7 +99,7 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
 
     func showDataForAlbumAtIndex(albumIndex: Int) {
         if albumIndex < allAlbums.count {
-            var album = allAlbums[albumIndex]
+            let album = allAlbums[albumIndex]
             currentAlbumData = album.tr_tableRepresentation()
         } else {
             currentAlbumData = nil
@@ -122,7 +122,7 @@ extension ViewController: HorizontalScrollerDelegate {
     }
     
     func horizontalScroller(scroller: HorizontalScroller, viewAtIndex index: Int) -> UIView {
-        var album = allAlbums[index]
+        let album = allAlbums[index]
         return AlbumView(frame: CGRectMake(0, 0, 100, 100), albumCover: album.coverUrl)
     }
 }
