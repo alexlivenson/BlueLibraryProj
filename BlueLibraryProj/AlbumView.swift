@@ -12,6 +12,7 @@ class AlbumView: UIView {
     
     private var coverImage: UIImageView!
     private var indicator: UIActivityIndicatorView!
+    private let notificationCenter = NSNotificationCenter.defaultCenter()
 
     init(frame: CGRect, albumCover: String) {
         super.init(frame: frame)
@@ -27,6 +28,19 @@ class AlbumView: UIView {
         indicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.WhiteLarge
         indicator.startAnimating()
         addSubview(indicator)
+        
+        
+        // Create notification
+        let userInfo = [
+            "imageView": coverImage,
+            "coverUrl": albumCover
+        ]
+        
+        notificationCenter
+            .postNotificationName(
+                "BLDownloadImageNotification",
+                object: self,
+                userInfo: userInfo)
     }
 
     required init?(coder aDecoder: NSCoder) {

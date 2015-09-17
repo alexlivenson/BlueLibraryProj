@@ -14,11 +14,11 @@ class PersistencyManager: NSObject {
     
     override init() {
         albums = [
-            Album(title: "Best of Bowie", artist: "David Bowie", coverUrl: "http://www.coversproject.com/static/thumbs/album/album_david%20bowie_best%20of%20bowie.png", year: "1992"),
-            Album(title: "It's My Life", artist: "No Doubt", coverUrl: "http://www.coversproject.com/static/thumbs/album/album_no%20doubt_its%20my%20life%20%20bathwater.png", year: "2003"),
-            Album(title: "Nothing Like The Sun", artist: "Sting", coverUrl: "http://www.coversproject.com/static/thumbs/album/album_sting_nothing%20like%20the%20sun.png", year: "1999"),
-            Album(title: "Staring at the Sun", artist: "U2", coverUrl: "http://www.coversproject.com/static/thumbs/album/album_u2_staring%20at%20the%20sun.png", year: "2000"),
-            Album(title: "American Pie", artist: "Madonna", coverUrl: "http://www.coversproject.com/static/thumbs/album/album_madonna_american%20pie.png", year: "2000")
+            Album(title: "Best of Bowie", artist: "David Bowie", coverUrl: "http://s3.amazonaws.com/CoverProject/album/album_david_bowie_pin_ups.png", year: "1992"),
+            Album(title: "It's My Life", artist: "No Doubt", coverUrl: "https://upload.wikimedia.org/wikipedia/en/9/93/ItsMyLifeNoDoubtCover.jpg", year: "2003"),
+            Album(title: "Nothing Like The Sun", artist: "Sting", coverUrl: "https://upload.wikimedia.org/wikipedia/en/3/30/%E2%80%A6Nothing_Like_the_Sun_(Sting_album_-_cover_art).jpg", year: "1999"),
+            Album(title: "Staring at the Sun", artist: "U2", coverUrl: "http://media.u2.com/non_secure/images/20090218/discography/staring_at_the_sun2/600.jpg", year: "2000"),
+            Album(title: "American Pie", artist: "Madonna", coverUrl: "http://www.billboard.com/files/styles/promo_650/public/media/madonna-american-pie-video-billboard-650.jpg", year: "2000")
         ]
     }
    
@@ -37,4 +37,22 @@ class PersistencyManager: NSObject {
     func deleteAlbum(index: Int) {
         albums.removeAtIndex(index)
     }
+    
+    func saveImage(image: UIImage, filename: String) {
+        let fname = NSHomeDirectory() + "/Documents/" + filename
+        let data: NSData? = UIImagePNGRepresentation(image)
+        data?.writeToFile(fname, atomically: true)
+    }
+    
+    func getImage(filename: String) -> UIImage? {
+        let fname = NSHomeDirectory() + "/Documents/" + filename
+        let data: NSData? = NSData(contentsOfFile: fname)
+        
+        if let _data = data {
+            return UIImage(data: _data)
+        }
+        
+        return nil
+    }
+    
 }
