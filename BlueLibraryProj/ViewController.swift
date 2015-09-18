@@ -17,8 +17,14 @@ class ViewController: UIViewController {
     private var currentAlbumIndex = 0
     private var scroller: HorizontalScroller!
     
+    private let memento: NSUserDefaults = NSUserDefaults.standardUserDefaults()
+    private let notificationCenter = NSNotificationCenter.defaultCenter()
+    
+    private let currentAlbumIndexKey = "currentAlbumIndex"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        loadPreviousState()
         
         self.view.backgroundColor = UIColor(red: 0.76, green: 0.81, blue: 0.87, alpha: 1)
         allAlbums = LibraryAPI.sharedInstance.getAlbums()
@@ -41,6 +47,8 @@ class ViewController: UIViewController {
         
         showDataForAlbumAtIndex(currentAlbumIndex)
         reloadScroller()
+        
+        registerObservers()
         // Do any additional setup after loading the view, typically from a nib.
     }
     
@@ -60,6 +68,36 @@ class ViewController: UIViewController {
         
         scroller?.reload()
         showDataForAlbumAtIndex(currentAlbumIndex)
+    }
+    
+    func saveCurrentState() {
+        /*
+            When user leave the app, then comes back again, he wants the exact same state he
+            left it in. In order to do this we need to save the currently displayed album.
+            Since it's only one piece of info we can user NSUserDefaults
+        */
+        memento.setInteger( currentAlbumIndex, forKey: currentAlbumIndexKey)
+    }
+    
+    func loadPreviousState() {
+        currentAlbumIndex = memento.integerForKey(currentAlbumIndexKey)
+        showDataForAlbumAtIndex(currentAlbumIndex)
+    }
+    
+    func registerObservers() {
+        notificationCenter.addObserver(
+            self,
+            selector: "saveCurrentState",
+            name: UIApplicationDidEnterBackgroundNotification,
+            object: nil)
+    }
+    
+    func deRegisterObservers() {
+        notificationCenter.removeObserver(self)
+    }
+    
+    deinit {
+        deRegisterObservers()
     }
 }
 
