@@ -19,15 +19,15 @@ class ViewController: UIViewController {
     
     private let memento: NSUserDefaults = NSUserDefaults.standardUserDefaults()
     private let notificationCenter = NSNotificationCenter.defaultCenter()
+    private let libraryAPI = LibraryAPI.sharedInstance
     
     private let currentAlbumIndexKey = "currentAlbumIndex"
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadPreviousState()
         
         self.view.backgroundColor = UIColor(red: 0.76, green: 0.81, blue: 0.87, alpha: 1)
-        allAlbums = LibraryAPI.sharedInstance.getAlbums()
+        allAlbums = libraryAPI.getAlbums()
         
         // create data table
         let tableFrame = CGRectMake(0, 120, self.view.frame.width, self.view.frame.height - 120)
@@ -42,11 +42,14 @@ class ViewController: UIViewController {
         scroller.backgroundColor = UIColor(red: 0.24, green: 0.35, blue: 0.49, alpha: 1)
         scroller.delegate = self
         
+        loadPreviousState()
+        
         view.addSubview(dataTable)
         view.addSubview(scroller)
         
         showDataForAlbumAtIndex(currentAlbumIndex)
         reloadScroller()
+        
         
         registerObservers()
         // Do any additional setup after loading the view, typically from a nib.
@@ -58,7 +61,7 @@ class ViewController: UIViewController {
     }
     
     func reloadScroller() {
-        allAlbums = LibraryAPI.sharedInstance.getAlbums()
+        allAlbums = libraryAPI.getAlbums()
         
         if currentAlbumIndex < 0 {
             currentAlbumIndex = 0
@@ -76,7 +79,8 @@ class ViewController: UIViewController {
             left it in. In order to do this we need to save the currently displayed album.
             Since it's only one piece of info we can user NSUserDefaults
         */
-        memento.setInteger( currentAlbumIndex, forKey: currentAlbumIndexKey)
+        memento.setInteger(currentAlbumIndex, forKey: currentAlbumIndexKey)
+        libraryAPI.saveAlbums()
     }
     
     func loadPreviousState() {
@@ -162,5 +166,9 @@ extension ViewController: HorizontalScrollerDelegate {
     func horizontalScroller(scroller: HorizontalScroller, viewAtIndex index: Int) -> UIView {
         let album = allAlbums[index]
         return AlbumView(frame: CGRectMake(0, 0, 100, 100), albumCover: album.coverUrl)
+    }
+    
+    func initialViewIndexForHorizontalScroller(scroller: HorizontalScroller) -> Int {
+        return currentAlbumIndex
     }
 }

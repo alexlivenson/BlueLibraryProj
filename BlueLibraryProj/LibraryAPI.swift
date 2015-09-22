@@ -76,6 +76,10 @@ class LibraryAPI: NSObject {
         }
     }
     
+    func saveAlbums() {
+        persistencyManager.saveAlbums()
+    }
+    
     deinit {
         notificationCenter.removeObserver(self)
     }
