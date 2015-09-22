@@ -8,6 +8,7 @@
 
 import UIKit
 
+// PRAGMA MARK: HorizontalScrollerDelegate
 @objc protocol HorizontalScrollerDelegate: NSObjectProtocol {
     // ask the delegate how many views it wants to present insdie the scroller
     func numberOfViewsForHorizontalScroller(scroller: HorizontalScroller) -> Int
@@ -93,17 +94,15 @@ class HorizontalScroller: UIView {
         
         // Enumerate over only the subviews that we added
         for var i = 0; i < self.delegate?.numberOfViewsForHorizontalScroller(self); i++ {
-            let view = scroller.subviews[i] as? UIView
+            let view = scroller.subviews[i]
             
-            if let view = view {
-                if CGRectContainsPoint(view.frame, location) {
-                    self.delegate?.horizontalScroller(self, clickedViewAtIndex: i)
-                    
-                    // center the view
-                    let point = CGPointMake(view.frame.origin.x  - frame.size.width / 2 + view.frame.size.width / 2, 0)
-                    scroller.setContentOffset(point, animated: true)
-                    break
-                }
+            if CGRectContainsPoint(view.frame, location) {
+                self.delegate?.horizontalScroller(self, clickedViewAtIndex: i)
+                
+                // center the view
+                let point = CGPointMake(view.frame.origin.x  - frame.size.width / 2 + view.frame.size.width / 2, 0)
+                scroller.setContentOffset(point, animated: true)
+                break
             }
         }
     }
@@ -117,6 +116,7 @@ class HorizontalScroller: UIView {
     
 }
 
+// PRAGMA MARK: UIScrollViewDelegate
 extension HorizontalScroller: UIScrollViewDelegate {
     func scrollViewDidEndDragging(scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         if !decelerate {

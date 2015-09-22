@@ -54,7 +54,7 @@ class Album: NSObject, NSCoding {
     }
 }
 
-// Album+TableRepresentation
+// MARK: Album+TableRepresentation
 extension Album {
     func tr_tableRepresentation() -> [String: [String]] {
         return [

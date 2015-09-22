@@ -8,7 +8,6 @@
 
 import UIKit
 
-// TODO: Alex L create a view controller with a view that has a table view
 class ViewController: UIViewController {
     
     private var dataTable: UITableView!
@@ -105,7 +104,7 @@ class ViewController: UIViewController {
     }
 }
 
-// pragma mark - UITableViewDelegate, UITableViewDataSource methods
+// PRAGMA MARK: - UITableViewDelegate, UITableViewDataSource methods
 extension ViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -151,7 +150,7 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
     }
 }
 
-// pragma mark - HorizontalScrollerDelegate methods
+// PRAGMA MARK: - HorizontalScrollerDelegate methods
 extension ViewController: HorizontalScrollerDelegate {
     
     func horizontalScroller(scroller: HorizontalScroller, clickedViewAtIndex index: Int) {
