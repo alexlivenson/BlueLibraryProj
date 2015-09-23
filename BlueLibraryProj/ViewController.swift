@@ -11,10 +11,16 @@ import UIKit
 class ViewController: UIViewController {
     
     private var dataTable: UITableView!
+    private var toolbar: UIToolbar!
+    private var scroller: HorizontalScroller!
+    
+    // We will use this array as a stack to push/pop operation for undo option
+    // TODO: Use memento pattern to undo/save actions of an operation
+    private var undoStack: [AnyObject] = []
+    
     private var allAlbums: [Album] = []
     private var currentAlbumData: [String: [String]]?
     private var currentAlbumIndex = 0
-    private var scroller: HorizontalScroller!
     
     private let memento: NSUserDefaults = NSUserDefaults.standardUserDefaults()
     private let notificationCenter = NSNotificationCenter.defaultCenter()
@@ -22,41 +28,88 @@ class ViewController: UIViewController {
     
     private let currentAlbumIndexKey = "currentAlbumIndex"
     
+    // NOTE: Frame size set in viewDidLoad isn't final
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.view.backgroundColor = UIColor(red: 0.76, green: 0.81, blue: 0.87, alpha: 1)
         allAlbums = libraryAPI.getAlbums()
         
-        // create data table
-        let tableFrame = CGRectMake(0, 120, self.view.frame.width, self.view.frame.height - 120)
-        dataTable = UITableView(frame: tableFrame, style: UITableViewStyle.Grouped)
-        dataTable.delegate = self
-        dataTable.dataSource = self
-        dataTable.backgroundView = nil
-        
-        // create scroller 
-        let scrollerFrame = CGRectMake(0, 20, self.view.frame.size.width, 130)
-        scroller = HorizontalScroller(frame: scrollerFrame)
-        scroller.backgroundColor = UIColor(red: 0.24, green: 0.35, blue: 0.49, alpha: 1)
-        scroller.delegate = self
+        createTableView()
+        createScroller()
+        createToolBar()
         
         loadPreviousState()
         
         view.addSubview(dataTable)
         view.addSubview(scroller)
+        view.addSubview(toolbar)
         
         showDataForAlbumAtIndex(currentAlbumIndex)
         reloadScroller()
-        
         
         registerObservers()
         // Do any additional setup after loading the view, typically from a nib.
     }
     
+    private func createToolBar() {
+        toolbar = UIToolbar()
+        let undoItem = UIBarButtonItem(
+            barButtonSystemItem: UIBarButtonSystemItem.Undo,
+            target: self,
+            action: "undoAction")
+        undoItem.enabled = false
+        let space = UIBarButtonItem(
+            barButtonSystemItem: UIBarButtonSystemItem.FlexibleSpace,
+            target: nil,
+            action: nil)
+        let delete = UIBarButtonItem(
+            barButtonSystemItem: UIBarButtonSystemItem.Trash,
+            target: self,
+            action: "deleteAlbum")
+        toolbar.setItems([undoItem, space, delete], animated: true)
+    }
+    
+    private func createTableView() {
+        let tableFrame = CGRectMake(0, 120, self.view.frame.width, self.view.frame.height - 120)
+        dataTable = UITableView(frame: tableFrame, style: UITableViewStyle.Grouped)
+        dataTable.delegate = self
+        dataTable.dataSource = self
+        dataTable.backgroundView = nil
+    }
+    
+    private func createScroller() {
+        let scrollerFrame = CGRectMake(0, 20, self.view.frame.size.width, 130)
+        scroller = HorizontalScroller(frame: scrollerFrame)
+        scroller.backgroundColor = UIColor(red: 0.24, green: 0.35, blue: 0.49, alpha: 1)
+        scroller.delegate = self
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        let height = self.view.frame.size.height
+        let width = self.view.frame.size.width
+        toolbar.frame = CGRectMake(0, height - 44, width, 44)
+    }
+    
+    func addAlbum(album: Album, atIndex index: Int) {
+        libraryAPI.addAlbum(album, index: index)
+        currentAlbumIndex = index
+        reloadScroller()
+    }
+    
+    // NOTE: NSInvocation is not allowed in swift, need to rething (use memento?)
+    func deleteAlbum() {
+
+    }
+    
+    func undoAction() {
+        
     }
     
     func reloadScroller() {
